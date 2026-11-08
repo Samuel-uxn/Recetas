@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.aplications.recetas.ui.theme.RecetasTheme
+import com.aplications.recetas.view.PantallaCatalogo
 import com.aplications.recetas.view.ScreenLogin
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RecetasTheme {
-                ScreenLogin()
+                PantallaCatalogo()
             }
         }
     }
