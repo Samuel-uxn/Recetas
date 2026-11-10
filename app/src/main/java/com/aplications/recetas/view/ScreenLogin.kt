@@ -38,7 +38,7 @@ import com.aplications.recetas.R
 
 @Preview(showSystemUi = true)
 @Composable
-fun ScreenLogin() {
+fun ScreenLogin(onLoginClick:()-> Unit) {
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Color(0xFFD1E0D1))
@@ -104,7 +104,7 @@ fun ScreenLogin() {
             }
 
        }
-        Button(onClick = {}, modifier = Modifier
+        Button(onClick = { onLoginClick() }, modifier = Modifier
             .fillMaxWidth()
             .height(55.dp)
             .align(Alignment.BottomCenter)) {

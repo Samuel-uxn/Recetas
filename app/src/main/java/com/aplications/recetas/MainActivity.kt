@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aplications.recetas.ui.theme.RecetasTheme
 import com.aplications.recetas.view.ScreenInicio
 import com.aplications.recetas.view.ScreenLogin
+import com.aplications.recetas.view.navigation.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RecetasTheme {
-                ScreenInicio()
+                Navigation()
             }
         }
     }

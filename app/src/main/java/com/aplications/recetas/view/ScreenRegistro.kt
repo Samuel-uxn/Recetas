@@ -112,8 +112,6 @@ fun ScreenRegistro(){
             }
             Spacer(modifier = Modifier.height(10.dp))
             Text("¿Ya tienes cuenta? Iniciar Sesion", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-
-
         }
     }
 }
