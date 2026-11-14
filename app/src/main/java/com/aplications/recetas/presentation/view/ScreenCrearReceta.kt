@@ -1,5 +1,4 @@
-package com.aplications.recetas.view
-
+package com.aplications.recetas.presentation.view
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize

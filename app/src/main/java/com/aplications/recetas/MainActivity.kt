@@ -11,9 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.aplications.recetas.ui.theme.RecetasTheme
-import com.aplications.recetas.view.ScreenInicio
-import com.aplications.recetas.view.ScreenLogin
+import com.aplications.recetas.presentation.ui.theme.RecetasTheme
+
 import com.aplications.recetas.view.navigation.Navigation
 
 class MainActivity : ComponentActivity() {

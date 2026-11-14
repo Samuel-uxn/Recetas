@@ -1,4 +1,4 @@
-package com.aplications.recetas.ui.theme
+package com.aplications.recetas.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

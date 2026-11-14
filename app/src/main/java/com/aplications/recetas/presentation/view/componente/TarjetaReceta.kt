@@ -1,4 +1,4 @@
-package com.aplications.recetas.view.componente
+package com.aplications.recetas.presentation.view.componente
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

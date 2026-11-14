@@ -1,4 +1,4 @@
-package com.aplications.recetas.model
+package com.aplications.recetas.domain.model
 
 data class Receta(
     val id: Int,

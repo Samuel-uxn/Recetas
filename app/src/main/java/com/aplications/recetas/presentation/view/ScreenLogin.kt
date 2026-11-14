@@ -1,4 +1,4 @@
-package com.aplications.recetas.view
+package com.aplications.recetas.presentation.view
 
 import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
@@ -36,7 +36,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.aplications.recetas.R
 
-@Preview(showSystemUi = true)
 @Composable
 fun ScreenLogin(onLoginClick:()-> Unit) {
     Box(modifier = Modifier

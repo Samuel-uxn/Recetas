@@ -1,4 +1,4 @@
-package com.aplications.recetas.view
+package com.aplications.recetas.presentation.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,8 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aplications.recetas.R
-import com.aplications.recetas.view.componente.TarjetaReceta
-import com.aplications.recetas.model.Receta
+import com.aplications.recetas.domain.model.Receta
+import com.aplications.recetas.presentation.view.componente.TarjetaReceta
 
 @Composable
 fun ScreenInicio(

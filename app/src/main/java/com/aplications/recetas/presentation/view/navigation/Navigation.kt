@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.aplications.recetas.view.ScreenCrearReceta
-import com.aplications.recetas.view.ScreenDetalleReceta
-import com.aplications.recetas.view.ScreenInicio
-import com.aplications.recetas.view.ScreenLogin
-import com.aplications.recetas.view.ScreenSeleccionarIngredientes
+import com.aplications.recetas.presentation.view.ScreenCrearReceta
+import com.aplications.recetas.presentation.view.ScreenDetalleReceta
+import com.aplications.recetas.presentation.view.ScreenInicio
+import com.aplications.recetas.presentation.view.ScreenLogin
+import com.aplications.recetas.presentation.view.ScreenSeleccionarIngredientes
+
 
 @Composable
 fun Navigation(){
