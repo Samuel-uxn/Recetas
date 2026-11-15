@@ -41,7 +41,7 @@ class AuthViewModel(
                 .onFailure { _state.value = AuthState(error = traducir(it)) }
         }
     }
-    private fun     // Mensajes de Firebase en español
+    private fun
 traducir(e: Throwable) = when (e) {
         is FirebaseAuthUserCollisionException -> "Ese correo ya está registrado"
         is FirebaseAuthWeakPasswordException -> "La contraseña es muy débil"

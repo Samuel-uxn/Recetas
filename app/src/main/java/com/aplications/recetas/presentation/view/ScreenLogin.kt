@@ -1,5 +1,6 @@
 package com.aplications.recetas.presentation.view
 
+import android.graphics.Color.red
 import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,7 +17,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
@@ -30,14 +33,32 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.aplications.recetas.R
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 
 @Composable
-fun ScreenLogin(onLoginClick:()-> Unit) {
+fun ScreenLogin(
+    onLoginClick:(email: String, password: String)-> Unit ={_,_->},
+    onRegistroClick:()-> Unit={},
+    onGoogleClick:()-> Unit={},
+    loading: Boolean = false,
+    error: String? = null
+) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var errorLocal by remember { mutableStateOf<String?>(null) }
+
+
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Color(0xFFD1E0D1))
@@ -52,26 +73,52 @@ fun ScreenLogin(onLoginClick:()-> Unit) {
             Spacer(modifier = Modifier.height(30.dp))
             Column() {
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = email,
+                    onValueChange = {email = it},
                     label = {Text("Correo electronico")},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                    singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = password,
+                    onValueChange = {password = it},
                     label = {Text("Ingresa tu contraseña")},
+                    visualTransformation = PasswordVisualTransformation(),
+                    singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
-                Text("¿Olvidaste tu contraseña?", textAlign = TextAlign.Center)
+                (errorLocal?: error)?.let {
+                    Text(
+                        it,
+                        color = Color.Red,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
+                    )
+                }
+                Text(
+                    "¿Olvidaste tu contraseña?", textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
+                )
                 Spacer(modifier = Modifier.height(20.dp))
-                Button(onClick = {}, modifier = Modifier.fillMaxWidth().height(55.dp)) {
-                    Text("Iniciar sesion", textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth())
+                Button(
+                    onClick = {
+                        errorLocal = if(email.isBlank()|| password.isBlank())
+                            "Completa todos los campos" else null
+                        if (errorLocal == null)
+                            onLoginClick(email.trim(),password)
+                    },
+                    enabled = !loading,
+                    modifier = Modifier.fillMaxWidth().height(55.dp))
+                {
+                    if(loading){
+                        CircularProgressIndicator(modifier = Modifier.size(24.dp), strokeWidth = 2.dp)
+                    }else{
+                        Text("Iniciar sesion", textAlign = TextAlign.Center)
+                    }
                 }
                 Spacer(modifier = Modifier.height(15.dp))
-
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
@@ -91,7 +138,9 @@ fun ScreenLogin(onLoginClick:()-> Unit) {
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 
-                OutlinedButton(onClick = {}, modifier = Modifier.fillMaxWidth().height(55.dp)) {
+                OutlinedButton(onClick = onGoogleClick,
+                    enabled = !loading,
+                    modifier = Modifier.fillMaxWidth().height(55.dp)) {
                     Image(painter = painterResource(id = R.drawable.google),
                         contentDescription = "Logo de Google",
                         modifier = Modifier.size(24.dp))
@@ -103,7 +152,7 @@ fun ScreenLogin(onLoginClick:()-> Unit) {
             }
 
        }
-        Button(onClick = { onLoginClick() }, modifier = Modifier
+        Button(onClick =  onRegistroClick, modifier = Modifier
             .fillMaxWidth()
             .height(55.dp)
             .align(Alignment.BottomCenter)) {
